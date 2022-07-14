@@ -34,16 +34,11 @@ public class DashboardPage {
         return new MoneyTransferPage();
     }
 
-    public int getCard1Balance() {
-        String text = fieldFirstCard.getText();
-        val start = text.indexOf(balanceStart);
-        val finish = text.indexOf(balanceFinish);
-        val value = text.substring(start + balanceStart.length(), finish);
-        return Integer.parseInt(value);
+    public int getCardBalance(String id) {
+        return extractBalance($("[data-test-id='" + id + "']").getText());
     }
 
-    public int getCard2Balance() {
-        String text = fieldSecondCard.getText();
+    private int extractBalance(String text) {
         val start = text.indexOf(balanceStart);
         val finish = text.indexOf(balanceFinish);
         val value = text.substring(start + balanceStart.length(), finish);

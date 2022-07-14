@@ -4,6 +4,7 @@ import io.cucumber.java.ru.И;
 import io.cucumber.java.ru.Когда;
 import io.cucumber.java.ru.Пусть;
 import io.cucumber.java.ru.Тогда;
+import ru.netology.data.Data;
 import ru.netology.page.DashboardPage;
 import ru.netology.page.LoginPage;
 import ru.netology.page.MoneyTransferPage;
@@ -36,7 +37,7 @@ public class TemplateSteps {
 
     @Тогда("баланс его \"1\" карты из списка на главной странице должен стать {int} рублей")
     public void balance(int balance) {
-        int expected = dashboardPage.getCard1Balance();
+        int expected = dashboardPage.getCardBalance(Data.getRegisteredCard1().getDataTestId());
         assertEquals(expected, balance);
     }
 }
